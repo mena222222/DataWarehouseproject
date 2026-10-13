@@ -1,0 +1,34 @@
+
+/*
+===============================================================================
+Project Name : Data Warehouse
+Script Name  : init_database.sql
+Description  : Initialize the Data Warehouse environment by:
+               - Dropping the database if it already exists
+               - Creating the DataWarehouse database
+               - Creating Bronze, Silver, and Gold schemas
+Author       : Mina Magdy
+Created Date : 2026-10-13
+===============================================================================
+*/
+
+if exists(select 1 fom sys.databases where name = 'datawarehouse')
+begin 
+alter database datawarehouse set singlr_user with rollback immediate
+drop database datawarehouse
+end
+--select Database
+use master 
+go
+--create DataWareHouse
+create database DataWareHouse
+go
+--select use DataWareHouse
+use DataWareHouse
+go
+--create schema (bronze,silver,gold)
+create schema Bronze
+go 
+create schema Silver 
+go 
+create schema Gold
